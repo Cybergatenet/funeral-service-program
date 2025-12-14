@@ -1,80 +1,92 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8">
+<head>
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="">
-    <meta name="author" content="">
+    <title>QR Code PDF Download</title>
+    <link rel="stylesheet" href="scanner.css">
+    <!-- Include QR Code scanner library -->
+    <script src="https://unpkg.com/html5-qrcode@2.3.8/html5-qrcode.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>📄 QR Code PDF Download</h1>
+            <p>Scan a QR code to download your PDF file</p>
+        </header>
 
-    <title>In memoriam Joseph Amarachi Uwasomba</title>
+        <main>
+            <div class="app-container">
+                <div class="scanner-section">
+                    <h2>📱 Scan QR Code</h2>
+                    <div id="qr-reader" style="width: 100%; max-width: 500px; margin: 0 auto;"></div>
+                    <div class="scanner-controls">
+                        <button id="start-scanner" class="btn btn-primary">
+                            Start Scanner
+                        </button>
+                        <button id="stop-scanner" class="btn btn-secondary" disabled>
+                            Stop Scanner
+                        </button>
+                        <button id="switch-camera" class="btn btn-info">
+                            Switch Camera
+                        </button>
+                    </div>
+                </div>
 
-    <!-- Bootstrap core CSS -->
-    <link href="./assets/css/bootstrap.min.css" rel="stylesheet">
-    <link href="./assets/css/bootstrap-glyphicons.css" rel="stylesheet">
-    
-    <!-- Remember template CSS -->
-    <link href="./assets/css/remember.css" rel="stylesheet">
-  </head>
+                <div class="result-section">
+                    <h2>📄 File Information</h2>
+                    <div id="result-container">
+                        <div class="placeholder">
+                            <p>Scan a QR code to see file details here</p>
+                        </div>
+                        <div id="file-info" style="display: none;">
+                            <div class="file-card">
+                                <div class="file-icon">📄</div>
+                                <div class="file-details">
+                                    <h3 id="file-name">document.pdf</h3>
+                                    <p>File Type: <span id="file-type">PDF</span></p>
+                                    <p>Status: <span id="file-status" class="status">Ready to download</span></p>
+                                    <div class="file-actions">
+                                        <button id="download-btn" class="btn btn-success">
+                                            Download File
+                                        </button>
+                                        <button id="reset-btn" class="btn btn-secondary">
+                                            Scan Another
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
 
-<!-- NAVBAR
-================================================== -->
-  <body>
-    <div class="navbar-wrapper">
-      <div class="container">
+                <div class="instructions-section">
+                    <h2>📋 Instructions</h2>
+                    <ol>
+                        <li>Click "Start Scanner" to activate your camera</li>
+                        <li>Point your camera at a QR code containing a PDF file URL</li>
+                        <li>The scanner will automatically detect and display file information</li>
+                        <li>Click "Download File" to save the PDF to your device</li>
+                        <li>Use "Switch Camera" to toggle between front/back cameras</li>
+                        <li>Click "Stop Scanner" when finished</li>
+                    </ol>
+                    
+                    <div class="note">
+                        <strong>Note:</strong> Make sure your PDF file is uploaded to the server 
+                        and the QR code contains the correct URL to the file.
+                    </div>
+                </div>
 
-        <div class="navbar navbar-inverse navbar-static-top">
-          <div class="container">
-    	    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".nav-collapse">
-    	      <span class="icon-bar"></span>
-    	      <span class="icon-bar"></span>
-    	      <span class="icon-bar"></span>
-    	    </button>
-            <div class="nav-collapse collapse">
-              <ul class="nav navbar-nav">
-                <li><a href="index.html"><B>FIRSTNAME LASTNAME</B></a></li>
-                <li><a href="funeral.html">Funeral</a></li>
-                <li><a href="photos.html">Photos</a></li>
-                <li><a href="condolences.html">Condolences</a></li>
-                <li><a href="contact.html">Contact</a></li>
-              </ul>
+                <!-- Hidden download link -->
+                <a id="hidden-download" style="display: none;"></a>
             </div>
-          </div>
-        </div>
+        </main>
 
-      </div>
+        <footer>
+            <p>QR Code PDF Download System &copy; <span id="current-year"></span></p>
+        </footer>
     </div>
 
-    <!-- CENTRAL CONTAINER
-    ================================================== -->
-    <!-- Wrap the rest of the page in another container to center all the content. -->
-
-    <div class="container remember">
-
-      <!-- START THE CENTRAL SECTION -->
-
-      <div class="lovedone">
-
-        <img class="lovedone-image img-circle pull-right img-responsive" src="images/lovedone-circle.jpeg" alt="placeholder for the picture of your loved one.">
-
-        <!-- Replace the placeholder image by removing the line above, and enabling the line below after uploading your own image. The ideal size is 512x512
-
-        <img class="lovedone-image img-circle pull-right img-responsive" src="./images/lovedone.png"> -->
-
-        <h2 class="lovedone-heading">Bye name <span class="text-muted">mm.dd.yyyy</span></h2>
-        <p class="lead">
-            A warm heart<BR />
-            for family and friends<BR />
-            we miss your love, support and limitless hospitality
-        </p>
-      </div>  
-    </div>
-
-    <!-- Bootstrap core JavaScript
-    ================================================== -->
-    <!-- Placed at the end of the document so the pages load faster -->
-    <script src="./assets/js/jquery.js"></script>
-    <script src="./assets/js/bootstrap.js"></script>
-    <script src="./assets/js/holder.js"></script>
-
-  </body>
+    <script src="scanner.js"></script>
+</body>
 </html>
